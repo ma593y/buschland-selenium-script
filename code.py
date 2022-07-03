@@ -5,8 +5,11 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service as ChromeService
 
 # Selenium local webdriver configurations
+chrome_options = webdriver.ChromeOptions()
+chrome_options.page_load_strategy = 'normal'
+chrome_options.add_argument("--start-maximized")
 service = ChromeService(executable_path=ChromeDriverManager().install())
-driver = webdriver.Chrome(service=service)
+driver = webdriver.Chrome(service=service, options=chrome_options)
 
 # Open card page
 driver.get("https://buschland.eu/A/ABC_Seeds/Chunk_44/ABC_Seeds__Chunk_44.html")
